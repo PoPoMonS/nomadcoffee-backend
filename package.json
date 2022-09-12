@@ -1,0 +1,32 @@
+{
+  "name": "nomadcoffee-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PoPoMonS/nomadcoffee-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PoPoMonS/nomadcoffee-backend/issues"
+  },
+  "homepage": "https://github.com/PoPoMonS/nomadcoffee-backend#readme",
+  "description": "",
+  "dependencies": {
+    "apollo-server": "^2.25.2",
+    "dotenv": "^16.0.2",
+    "graphql": "^15.8.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.19.0",
+    "@babel/node": "^7.18.10",
+    "@babel/preset-env": "^7.19.0",
+    "nodemon": "^2.0.19",
+    "prisma": "^4.3.1"
+  }
+}
