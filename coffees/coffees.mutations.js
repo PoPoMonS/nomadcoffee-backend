@@ -1,21 +1,31 @@
 import client from "../client";
+import bcrypt from "bcrypt";
 
 export default {
 	Mutation: {
-		createCoffee: async (_, { menuName, size, sugarLevel, caffeine }) => {
-			const createdCoffee = await client.coffee.create({
-				data: {
-					menuName,
-					size,
-					sugarLevel,
-					caffeine,
-				},
+		createAccount: async (_, { userName, email, name, password }) => {
+			const existingUser = await client.user.findFirst({
+				where: { OR: [{ userName }, { email }] },
 			});
-			return createdCoffee;
-		},
-		deleteCoffee: async (_, { id }) => {
-			const deletedCoffee = await client.coffee.delete({ where: { id } });
-			return deletedCoffee;
+			if (existingUser) {
+				return {
+					ok: false,
+					error: "There is an user that already exist.",
+				};
+			} else {
+				const uglyPassword = await bcrypt.hash(password, 10);
+				await client.user.create({
+					data: {
+						userName,
+						email,
+						name,
+						password: uglyPassword,
+					},
+				});
+				return {
+					ok: true,
+				};
+			}
 		},
 	},
 };

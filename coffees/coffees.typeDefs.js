@@ -1,26 +1,31 @@
 import { gql } from "apollo-server";
 
 export default gql`
-	type Coffee {
+	type User {
 		id: Int!
-		menuName: String!
-		size: String!
-		sugarLevel: Int!
-		caffeine: Boolean!
+		userName: String!
+		email: String!
+		name: String!
+		location: String
+		password: String!
+		avatarURL: String
+		githubUserName: String
 		createdAt: String!
 		updatedAt: String!
 	}
+	type createAccountResult {
+		ok: Boolean!
+		error: String
+	}
 	type Query {
-		coffees: [Coffee]
-		coffee(id: Int!): Coffee
+		getAccount(id: Int!): User
 	}
 	type Mutation {
-		createCoffee(
-			menuName: String!
-			size: String!
-			sugarLevel: Int!
-			caffeine: Boolean!
-		): Coffee
-		deleteCoffee(id: Int!): Coffee
+		createAccount(
+			userName: String!
+			email: String!
+			name: String!
+			password: String!
+		): createAccountResult!
 	}
 `;

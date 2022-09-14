@@ -2,7 +2,7 @@ import client from "../client";
 
 export default {
 	Query: {
-		coffees: () => client.coffee.findMany(),
-		coffee: (_, { id }) => client.coffee.findUnique({ where: { id } }),
+		getAccount: async (_, { id }) =>
+			await client.user.findUnique({ where: { id } }),
 	},
 };
