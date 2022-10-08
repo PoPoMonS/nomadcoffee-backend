@@ -5,7 +5,6 @@
 
 */
 -- DropTable
-DROP TABLE "Coffee";
 
 -- CreateTable
 CREATE TABLE "User" (
