@@ -12,6 +12,7 @@ export default gql`
 		githubUserName: String
 		createdAt: String!
 		updatedAt: String!
+		photos: [Photo]
 		following: [User]
 		followers: [User]
 		totalFollowers: Int!
